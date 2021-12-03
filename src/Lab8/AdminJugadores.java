@@ -9,21 +9,22 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
-public class AdminPartidas {
-    private ArrayList <Partidas> listaPartidas = new ArrayList();
+public class AdminJugadores {
+         private ArrayList <Jugador> listaJugadores = new ArrayList();
     private File archivo = null;
     
-    public AdminPartidas(String path) {
+    public AdminJugadores(String path) {
         archivo = new File(path);
     }
 
-    public ArrayList<Partidas> getListaPartidas() {
-        return listaPartidas;
+    public ArrayList<Jugador> getListaJugadores() {
+        return listaJugadores;
     }
 
-    public void setListaPartidas(ArrayList<Partidas> listaPartidas) {
-        this.listaPartidas = listaPartidas;
+    public void setListaJugadores(ArrayList<Jugador> listaJugadores) {
+        this.listaJugadores = listaJugadores;
     }
+
 
     public File getArchivo() {
         return archivo;
@@ -32,23 +33,24 @@ public class AdminPartidas {
     public void setArchivo(File archivo) {
         this.archivo = archivo;
     }
+
     
-    public void addPartida(Partidas p){
-        this.listaPartidas.add(p);
+    public void addJugadore(Jugador j){
+        this.listaJugadores.add(j);
     }
 
      public void cargarArchivo() {
         try {            
-            listaPartidas = new ArrayList();
-            Partidas temp;
+            listaJugadores = new ArrayList();
+            Jugador temp;
             if (archivo.exists()) {
                 FileInputStream entrada
                     = new FileInputStream(archivo);
                 ObjectInputStream objeto
                     = new ObjectInputStream(entrada);
                 try {
-                    while ((temp = (Partidas) objeto.readObject()) != null) {
-                        listaPartidas.add(temp);
+                    while ((temp = (Jugador) objeto.readObject()) != null) {
+                        listaJugadores.add(temp);
                     }
                 } catch (EOFException e) {
                     //encontro el final del archivo
@@ -67,8 +69,8 @@ public class AdminPartidas {
         try {
             fw = new FileOutputStream(archivo, true);
             bw = new ObjectOutputStream(fw);
-            for (Partidas p : listaPartidas) {
-                bw.writeObject(p);
+            for (Jugador j: listaJugadores) {
+                bw.writeObject(j);
             }
             bw.flush();
         } catch (Exception ex) {
@@ -80,6 +82,5 @@ public class AdminPartidas {
             }
         }
     }
-    
     
 }

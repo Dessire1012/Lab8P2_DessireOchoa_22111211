@@ -9,20 +9,20 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
-public class AdminPartidas {
-    private ArrayList <Partidas> listaPartidas = new ArrayList();
+public class AdminEstrellas {
+     private ArrayList <Estrellas> listaEstrellas = new ArrayList();
     private File archivo = null;
     
-    public AdminPartidas(String path) {
+    public AdminEstrellas(String path) {
         archivo = new File(path);
     }
 
-    public ArrayList<Partidas> getListaPartidas() {
-        return listaPartidas;
+    public ArrayList<Estrellas> getListaEstrellas() {
+        return listaEstrellas;
     }
 
-    public void setListaPartidas(ArrayList<Partidas> listaPartidas) {
-        this.listaPartidas = listaPartidas;
+    public void setListaEstrellas(ArrayList<Estrellas> listaEstrellas) {
+        this.listaEstrellas = listaEstrellas;
     }
 
     public File getArchivo() {
@@ -32,23 +32,24 @@ public class AdminPartidas {
     public void setArchivo(File archivo) {
         this.archivo = archivo;
     }
+
     
-    public void addPartida(Partidas p){
-        this.listaPartidas.add(p);
+    public void addEstrellas(Estrellas e){
+        this.listaEstrellas.add(e);
     }
 
      public void cargarArchivo() {
         try {            
-            listaPartidas = new ArrayList();
-            Partidas temp;
+            listaEstrellas = new ArrayList();
+            Estrellas temp;
             if (archivo.exists()) {
                 FileInputStream entrada
                     = new FileInputStream(archivo);
                 ObjectInputStream objeto
                     = new ObjectInputStream(entrada);
                 try {
-                    while ((temp = (Partidas) objeto.readObject()) != null) {
-                        listaPartidas.add(temp);
+                    while ((temp = (Estrellas) objeto.readObject()) != null) {
+                        listaEstrellas.add(temp);
                     }
                 } catch (EOFException e) {
                     //encontro el final del archivo
@@ -67,8 +68,8 @@ public class AdminPartidas {
         try {
             fw = new FileOutputStream(archivo, true);
             bw = new ObjectOutputStream(fw);
-            for (Partidas p : listaPartidas) {
-                bw.writeObject(p);
+            for (Estrellas e : listaEstrellas) {
+                bw.writeObject(e);
             }
             bw.flush();
         } catch (Exception ex) {
