@@ -38,6 +38,10 @@ public class Partidas {
     public void setListaEstrellas(ArrayList<Estrellas> listaEstrellas) {
         this.listaEstrellas = listaEstrellas;
     }
+    
+    public void addEstrella (Estrellas e){
+        this.listaEstrellas.add(e);
+    }
 
     public ArrayList<Jugador> getListaJugadores() {
         return listaJugadores;
@@ -45,6 +49,10 @@ public class Partidas {
 
     public void setListaJugadores(ArrayList<Jugador> listaJugadores) {
         this.listaJugadores = listaJugadores;
+    }
+    
+    public void addJugador (Jugador j){
+        this.listaJugadores.add(j);
     }
 
     @Override

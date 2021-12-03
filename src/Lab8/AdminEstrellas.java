@@ -10,9 +10,9 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class AdminEstrellas {
-     private ArrayList <Estrellas> listaEstrellas = new ArrayList();
+    private ArrayList<Estrellas> listaEstrellas = new ArrayList();
     private File archivo = null;
-    
+
     public AdminEstrellas(String path) {
         archivo = new File(path);
     }
@@ -33,20 +33,19 @@ public class AdminEstrellas {
         this.archivo = archivo;
     }
 
-    
-    public void addEstrellas(Estrellas e){
+    public void addEstrellas(Estrellas e) {
         this.listaEstrellas.add(e);
     }
 
-     public void cargarArchivo() {
-        try {            
+    public void cargarArchivo() {
+        try {
             listaEstrellas = new ArrayList();
             Estrellas temp;
             if (archivo.exists()) {
                 FileInputStream entrada
-                    = new FileInputStream(archivo);
+                        = new FileInputStream(archivo);
                 ObjectInputStream objeto
-                    = new ObjectInputStream(entrada);
+                        = new ObjectInputStream(entrada);
                 try {
                     while ((temp = (Estrellas) objeto.readObject()) != null) {
                         listaEstrellas.add(temp);
@@ -56,9 +55,9 @@ public class AdminEstrellas {
                 }
                 objeto.close();
                 entrada.close();
-            }            
+            }
         } catch (Exception ex) {
-            
+
         }
     }
 

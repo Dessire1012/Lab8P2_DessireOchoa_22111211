@@ -212,6 +212,11 @@ public class SuperJamesGalaxy extends javax.swing.JFrame {
         jLabel16.setText("Ingrese el nuevo nombre");
 
         jButton10.setText("Aceptar");
+        jButton10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton10MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -260,6 +265,11 @@ public class SuperJamesGalaxy extends javax.swing.JFrame {
         jButton1.setText("Iniciar");
 
         jButton2.setText("Editar Partida");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
 
         jButton3.setText("Eliminar Partida");
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -544,17 +554,67 @@ public class SuperJamesGalaxy extends javax.swing.JFrame {
         int distancia = Integer.parseInt(jTextField2.getText());
 
         listaEstrellas.add(new Estrellas(nombre, distancia, descripcion));
+        estrellasAdm.setListaEstrellas(listaEstrellas);
+        estrellasAdm.escribirArchivo();
         
         JOptionPane.showMessageDialog(this, "Estrella Creada");
         jTextField3.setText("");
         jTextArea1.setText("");
         jTextField2.setText("");
+        
+        Partidas p = (Partidas)jComboBox2.getSelectedItem();
+        
+        for (Partidas listaPartida : listaPartidas) {
+            if (listaPartida.getNombre().equals(p.getNombre())){
+                p.addEstrella(new Estrellas(nombre, distancia, descripcion));
+            }
+        }
 
     }//GEN-LAST:event_jButton5MouseClicked
 
     private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
-        // TODO add your handling code here:
+        String nombre = jTextField4.getText();
+        int velocidad = Integer.parseInt(jTextField5.getText());
+        
+        listaJugadores.add(new Jugador(nombre, velocidad));
+        jugadoresAdm.setListaJugadores(listaJugadores);
+        jugadoresAdm.escribirArchivo();
+        
+        JOptionPane.showMessageDialog(this, "Jugador Creado");
+        jTextField4.setText("");
+        jTextField5.setText("");
+        
+        Partidas p = (Partidas)jComboBox3.getSelectedItem();
+        for (Partidas listaPartida : listaPartidas) {
+            if (listaPartida.getNombre().equals(p.getNombre())){
+                p.addJugador(new Jugador(nombre, velocidad));
+            }
+        }
+       
+                
     }//GEN-LAST:event_jButton6MouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+       jDialog1.pack();
+       jDialog1.setLocationRelativeTo(this);
+       jDialog1.setVisible(true);
+       
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseClicked
+       String nombreP = modeloPartidas.getSelectedItem().toString();
+       String nuevoN = jTextField6.getText();
+
+        for (Partidas listaPartida : listaPartidas) {
+            if(listaPartida.getNombre().equals(nombreP)){
+                listaPartida.setNombre(nuevoN);
+            }
+        }
+        
+        JOptionPane.showMessageDialog(this, "Jugador modificado");
+        jTextField6.setText("");
+
+    }//GEN-LAST:event_jButton10MouseClicked
 
     /**
      * @param args the command line arguments
