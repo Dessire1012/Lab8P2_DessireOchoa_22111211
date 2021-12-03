@@ -7,15 +7,18 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class AdminPartidas {
+public class AdminPartidas implements Serializable{
     private ArrayList <Partidas> listaPartidas = new ArrayList();
     private File archivo = null;
     
     public AdminPartidas(String path) {
         archivo = new File(path);
     }
+    
+    private static final long SerialVersionUIDD = 444L;
 
     public ArrayList<Partidas> getListaPartidas() {
         return listaPartidas;

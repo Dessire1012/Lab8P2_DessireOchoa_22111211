@@ -33,8 +33,8 @@ public class SuperJamesGalaxy extends javax.swing.JFrame {
         listaPartidas.get(0).setListaJugadores(listaJugadores);
 
         partidasAdm.cargarArchivo();
-        partidasAdm.setListaPartidas(listaPartidas);
-        partidasAdm.escribirArchivo();
+        //partidasAdm.setListaPartidas(listaPartidas);
+       // partidasAdm.escribirArchivo();
 
         modeloPartidas = (DefaultComboBoxModel) jComboBox1.getModel();
 
@@ -64,9 +64,14 @@ public class SuperJamesGalaxy extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
-        jComboBox4 = new javax.swing.JComboBox<>();
-        jComboBox5 = new javax.swing.JComboBox<>();
+        jComboBox4_Jugador = new javax.swing.JComboBox<>();
+        jComboBox5_Estrellas = new javax.swing.JComboBox<>();
         jButton9 = new javax.swing.JButton();
+        jTextField_Jugador = new javax.swing.JTextField();
+        jTextField_Partida1 = new javax.swing.JTextField();
+        jTextField_DistanciaT = new javax.swing.JTextField();
+        jTextField_DistanciaR = new javax.swing.JTextField();
+        jTextField_Estrella = new javax.swing.JTextField();
         jDialog1 = new javax.swing.JDialog();
         jLabel16 = new javax.swing.JLabel();
         jTextField6 = new javax.swing.JTextField();
@@ -146,13 +151,53 @@ public class SuperJamesGalaxy extends javax.swing.JFrame {
 
         jButton9.setText("Agregar");
 
+        jTextField_Jugador.setEditable(false);
+        jTextField_Jugador.setText("_");
+
+        jTextField_Partida1.setEditable(false);
+        jTextField_Partida1.setText("_");
+
+        jTextField_DistanciaT.setEditable(false);
+        jTextField_DistanciaT.setText("_");
+
+        jTextField_DistanciaR.setEditable(false);
+        jTextField_DistanciaR.setText("_");
+
+        jTextField_Estrella.setEditable(false);
+        jTextField_Estrella.setText("_");
+
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
         jFrame1Layout.setHorizontalGroup(
             jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jFrame1Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addGap(20, 20, 20)
                 .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jFrame1Layout.createSequentialGroup()
+                        .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jFrame1Layout.createSequentialGroup()
+                                .addComponent(jLabel11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField_Partida1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jFrame1Layout.createSequentialGroup()
+                                .addComponent(jLabel12)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField_Jugador, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jFrame1Layout.createSequentialGroup()
+                                .addComponent(jLabel13)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField_DistanciaT, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(26, 26, 26)
+                        .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jFrame1Layout.createSequentialGroup()
+                                .addComponent(jLabel14)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField_Estrella))
+                            .addGroup(jFrame1Layout.createSequentialGroup()
+                                .addComponent(jLabel15)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField_DistanciaR, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 45, Short.MAX_VALUE))
                     .addComponent(jScrollPane2)
                     .addComponent(jProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jFrame1Layout.createSequentialGroup()
@@ -160,39 +205,33 @@ public class SuperJamesGalaxy extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jFrame1Layout.createSequentialGroup()
-                        .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel11)
-                            .addGroup(jFrame1Layout.createSequentialGroup()
-                                .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel12)
-                                    .addComponent(jLabel13))
-                                .addGap(128, 128, 128)
-                                .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel14)
-                                    .addComponent(jLabel15))))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jFrame1Layout.createSequentialGroup()
-                        .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBox4_Jugador, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jComboBox5_Estrellas, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jFrame1Layout.setVerticalGroup(
             jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jFrame1Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jLabel11)
+                .addGap(23, 23, 23)
+                .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(jTextField_Partida1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
-                    .addComponent(jLabel14))
+                    .addComponent(jLabel14)
+                    .addComponent(jTextField_Jugador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_Estrella, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(jLabel15))
-                .addGap(25, 25, 25)
+                    .addComponent(jLabel15)
+                    .addComponent(jTextField_DistanciaT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_DistanciaR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22)
                 .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -202,10 +241,10 @@ public class SuperJamesGalaxy extends javax.swing.JFrame {
                     .addComponent(jButton8))
                 .addGap(18, 18, 18)
                 .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox4_Jugador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox5_Estrellas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton9))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -263,6 +302,11 @@ public class SuperJamesGalaxy extends javax.swing.JFrame {
         jLabel2.setText("Partida");
 
         jButton1.setText("Iniciar");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
 
         jButton2.setText("Editar Partida");
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -556,16 +600,16 @@ public class SuperJamesGalaxy extends javax.swing.JFrame {
         listaEstrellas.add(new Estrellas(nombre, distancia, descripcion));
         estrellasAdm.setListaEstrellas(listaEstrellas);
         estrellasAdm.escribirArchivo();
-        
+
         JOptionPane.showMessageDialog(this, "Estrella Creada");
         jTextField3.setText("");
         jTextArea1.setText("");
         jTextField2.setText("");
-        
-        Partidas p = (Partidas)jComboBox2.getSelectedItem();
-        
+
+        Partidas p = (Partidas) jComboBox2.getSelectedItem();
+
         for (Partidas listaPartida : listaPartidas) {
-            if (listaPartida.getNombre().equals(p.getNombre())){
+            if (listaPartida.getNombre().equals(p.getNombre())) {
                 p.addEstrella(new Estrellas(nombre, distancia, descripcion));
             }
         }
@@ -575,46 +619,57 @@ public class SuperJamesGalaxy extends javax.swing.JFrame {
     private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
         String nombre = jTextField4.getText();
         int velocidad = Integer.parseInt(jTextField5.getText());
-        
+
         listaJugadores.add(new Jugador(nombre, velocidad));
         jugadoresAdm.setListaJugadores(listaJugadores);
         jugadoresAdm.escribirArchivo();
-        
+
         JOptionPane.showMessageDialog(this, "Jugador Creado");
         jTextField4.setText("");
         jTextField5.setText("");
+
+        Partidas p = (Partidas) jComboBox3.getSelectedItem();
         
-        Partidas p = (Partidas)jComboBox3.getSelectedItem();
         for (Partidas listaPartida : listaPartidas) {
-            if (listaPartida.getNombre().equals(p.getNombre())){
+            if (listaPartida.getNombre().equals(p.getNombre())) {
                 p.addJugador(new Jugador(nombre, velocidad));
             }
         }
-       
-                
+
+
     }//GEN-LAST:event_jButton6MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-       jDialog1.pack();
-       jDialog1.setLocationRelativeTo(this);
-       jDialog1.setVisible(true);
-       
+        jDialog1.pack();
+        jDialog1.setLocationRelativeTo(this);
+        jDialog1.setModal(true);
+        jDialog1.setVisible(true);
+
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseClicked
-       String nombreP = modeloPartidas.getSelectedItem().toString();
-       String nuevoN = jTextField6.getText();
+        String nombreP = modeloPartidas.getSelectedItem().toString();
+        String nuevoN = jTextField6.getText();
 
         for (Partidas listaPartida : listaPartidas) {
-            if(listaPartida.getNombre().equals(nombreP)){
+            if (listaPartida.getNombre().equals(nombreP)) {
                 listaPartida.setNombre(nuevoN);
             }
         }
-        
+
         JOptionPane.showMessageDialog(this, "Jugador modificado");
         jTextField6.setText("");
 
     }//GEN-LAST:event_jButton10MouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        jFrame1.pack();
+        jFrame1.setLocationRelativeTo(this);
+        jFrame1.setVisible(true);
+        
+        DefaultComboBoxModel juego_Jugador = (DefaultComboBoxModel) jComboBox4_Jugador.getModel();
+        
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -665,8 +720,8 @@ public class SuperJamesGalaxy extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
-    private javax.swing.JComboBox<String> jComboBox5;
+    private javax.swing.JComboBox<String> jComboBox4_Jugador;
+    private javax.swing.JComboBox<String> jComboBox5_Estrellas;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
@@ -700,11 +755,16 @@ public class SuperJamesGalaxy extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField_DistanciaR;
+    private javax.swing.JTextField jTextField_DistanciaT;
+    private javax.swing.JTextField jTextField_Estrella;
+    private javax.swing.JTextField jTextField_Jugador;
+    private javax.swing.JTextField jTextField_Partida1;
     // End of variables declaration//GEN-END:variables
     ArrayList<Partidas> listaPartidas = new ArrayList();
     AdminPartidas partidasAdm = new AdminPartidas("./Partidas.cmb");
-    AdminEstrellas estrellasAdm = new AdminEstrellas("./Estrellas.cmb");
-    AdminJugadores jugadoresAdm = new AdminJugadores("./Jugadores.cmb");
+    //AdminEstrellas estrellasAdm = new AdminEstrellas("./Estrellas.cmb");
+    //AdminJugadores jugadoresAdm = new AdminJugadores("./Jugadores.cmb");
     ArrayList<Jugador> listaJugadores = new ArrayList();
     ArrayList<Estrellas> listaEstrellas = new ArrayList();
     DefaultComboBoxModel modeloPartidas;

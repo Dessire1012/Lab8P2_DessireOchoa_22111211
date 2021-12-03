@@ -7,15 +7,18 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class AdminJugadores {
+public class AdminJugadores implements Serializable{
          private ArrayList <Jugador> listaJugadores = new ArrayList();
     private File archivo = null;
     
     public AdminJugadores(String path) {
         archivo = new File(path);
     }
+    
+     private static final long SerialVersionUIDD = 444L;
 
     public ArrayList<Jugador> getListaJugadores() {
         return listaJugadores;
