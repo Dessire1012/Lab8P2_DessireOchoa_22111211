@@ -13,15 +13,20 @@ public class AdminDistancia extends Thread{
     private int distanciaT;
     private int distanciaR;
     private int velocidad;
+    private int fila;
+    private String estrella;
+    private String jugador;
     
     private boolean avanzar;
     private boolean vive;
 
-    public AdminDistancia(JProgressBar progBar, int distanciaT, int velocidad) {
+    public AdminDistancia(JProgressBar progBar, int distanciaT, int velocidad, String estrella, String jugador) {
         this.progBar = progBar;
         this.distanciaT = distanciaT;
         this.distanciaR = 0;
         this.velocidad = velocidad;
+        this.jugador = jugador;
+        this.estrella = estrella;
         this.avanzar = true;
         this.vive = true;
     }
@@ -49,16 +54,116 @@ public class AdminDistancia extends Thread{
     public void setVive(boolean vive) {
         this.vive = vive;
     }
+
+    public JProgressBar getProgBar() {
+        return progBar;
+    }
+
+    public void setProgBar(JProgressBar progBar) {
+        this.progBar = progBar;
+    }
+
+    public JLabel getJlabelJugador() {
+        return JlabelJugador;
+    }
+
+    public void setJlabelJugador(JLabel JlabelJugador) {
+        this.JlabelJugador = JlabelJugador;
+    }
+
+    public JLabel getJlabelEstrella() {
+        return JlabelEstrella;
+    }
+
+    public void setJlabelEstrella(JLabel JlabelEstrella) {
+        this.JlabelEstrella = JlabelEstrella;
+    }
+
+    public JLabel getJlaberlDistanciaT() {
+        return JlaberlDistanciaT;
+    }
+
+    public void setJlaberlDistanciaT(JLabel JlaberlDistanciaT) {
+        this.JlaberlDistanciaT = JlaberlDistanciaT;
+    }
+
+    public JLabel getJlabelDistanciaR() {
+        return JlabelDistanciaR;
+    }
+
+    public void setJlabelDistanciaR(JLabel JlabelDistanciaR) {
+        this.JlabelDistanciaR = JlabelDistanciaR;
+    }
+
+    public int getDistanciaT() {
+        return distanciaT;
+    }
+
+    public void setDistanciaT(int distanciaT) {
+        this.distanciaT = distanciaT;
+    }
+
+    public int getDistanciaR() {
+        return distanciaR;
+    }
+
+    public void setDistanciaR(int distanciaR) {
+        this.distanciaR = distanciaR;
+    }
+
+    public int getVelocidad() {
+        return velocidad;
+    }
+
+    public void setVelocidad(int velocidad) {
+        this.velocidad = velocidad;
+    }
+
+    public int getFila() {
+        return fila;
+    }
+
+    public void setFila(int fila) {
+        this.fila = fila;
+    }
+
+    public String getEstrella() {
+        return estrella;
+    }
+
+    public void setEstrella(String estrella) {
+        this.estrella = estrella;
+    }
+
+    public String getJugador() {
+        return jugador;
+    }
+
+    public void setJugador(String jugador) {
+        this.jugador = jugador;
+    }
+   
+    
+    
     
     public void run(){
         while(vive){
             if(avanzar){
-                progBar.setValue(velocidad);
-                JlabelDistanciaR.setText(String.valueOf(distanciaR+velocidad));
-                
-                if(progBar.getValue()==distanciaT){
-                    vive=false;
-                }                
+                progBar.setMaximum(distanciaT);
+                JlaberlDistanciaT.setText(String.valueOf(distanciaT));
+                JlabelEstrella.setText(estrella);
+                JlabelJugador.setText(jugador);
+
+                if(distanciaR < distanciaT){
+                   progBar.setValue(progBar.getValue()+velocidad); 
+                   JlabelDistanciaR.setText(JlabelDistanciaR.getText() + velocidad);
+                   
+                }else {
+                    progBar.setValue(0);
+                    fila += 1;    
+                }
+
+                            
             } //FIN IF
             
             try {

@@ -675,6 +675,10 @@ public class SuperJamesGalaxy extends javax.swing.JFrame {
         jFrame1.pack();
         jFrame1.setLocationRelativeTo(this);
         jFrame1.setVisible(true);
+        
+        DefaultTableModel modelo
+                = (DefaultTableModel)jTable1.getModel();
+        modelo.setRowCount(0);
 
         String NPartida = jComboBox1.getSelectedItem().toString();
         jTextField_Partida1.setText(NPartida);
@@ -708,8 +712,7 @@ public class SuperJamesGalaxy extends javax.swing.JFrame {
         
         DefaultTableModel modelo
                 = (DefaultTableModel)jTable1.getModel();
-        modelo.setRowCount(0);
-        
+
          Object[] newrow = {nombre,
                 velocidad,
                 estrella,
@@ -720,6 +723,16 @@ public class SuperJamesGalaxy extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton9MouseClicked
 
     private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
+       
+       
+        
+            String nombre = (String)((DefaultTableModel) jTable1.getModel()).getValueAt(0, 0);
+            int velocidad = (int)((DefaultTableModel) jTable1.getModel()).getValueAt(0, 1);
+            String estrella = (String)((DefaultTableModel) jTable1.getModel()).getValueAt(0, 2);
+            int distancia = (int)((DefaultTableModel) jTable1.getModel()).getValueAt(0, 3);
+           
+            ad = new AdminDistancia(jProgressBar1, distancia, velocidad, estrella, nombre);
+            ad.start();
         
       
     }//GEN-LAST:event_jButton7MouseClicked
