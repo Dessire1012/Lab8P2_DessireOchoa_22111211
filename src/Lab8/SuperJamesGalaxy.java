@@ -724,14 +724,15 @@ public class SuperJamesGalaxy extends javax.swing.JFrame {
 
     private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
        
-       
+            JOptionPane.showMessageDialog(this, (int)((DefaultTableModel) jTable1.getModel()).getValueAt(0, 3) );
         
             String nombre = (String)((DefaultTableModel) jTable1.getModel()).getValueAt(0, 0);
             int velocidad = (int)((DefaultTableModel) jTable1.getModel()).getValueAt(0, 1);
             String estrella = (String)((DefaultTableModel) jTable1.getModel()).getValueAt(0, 2);
             int distancia = (int)((DefaultTableModel) jTable1.getModel()).getValueAt(0, 3);
            
-            ad = new AdminDistancia(jProgressBar1, distancia, velocidad, estrella, nombre);
+            ad = new AdminDistancia(jProgressBar1, distancia, velocidad, estrella, nombre, jLabel_Jugador, jLabel_Estrella, jLabel_DistanciaT,
+            jLabel_DistanciaR);
             ad.start();
         
       

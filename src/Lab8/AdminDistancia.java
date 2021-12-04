@@ -20,13 +20,18 @@ public class AdminDistancia extends Thread{
     private boolean avanzar;
     private boolean vive;
 
-    public AdminDistancia(JProgressBar progBar, int distanciaT, int velocidad, String estrella, String jugador) {
+    public AdminDistancia(JProgressBar progBar, int distanciaT, int velocidad, String estrella, String jugador, JLabel JlabelJugador,
+    JLabel JlabelEstrella, JLabel JlaberlDistanciaT, JLabel JlabelDistanciaR ) {
         this.progBar = progBar;
         this.distanciaT = distanciaT;
         this.distanciaR = 0;
         this.velocidad = velocidad;
         this.jugador = jugador;
         this.estrella = estrella;
+        this.JlabelJugador = JlabelJugador;
+        this.JlabelEstrella = JlabelEstrella;
+        this.JlabelDistanciaR = JlaberlDistanciaT;
+        this.JlabelDistanciaR = JlabelDistanciaR;
         this.avanzar = true;
         this.vive = true;
     }
@@ -150,7 +155,7 @@ public class AdminDistancia extends Thread{
         while(vive){
             if(avanzar){
                 progBar.setMaximum(distanciaT);
-                JlaberlDistanciaT.setText(String.valueOf(distanciaT));
+                JlaberlDistanciaT.setText(Integer.toString(distanciaT));
                 JlabelEstrella.setText(estrella);
                 JlabelJugador.setText(jugador);
 
