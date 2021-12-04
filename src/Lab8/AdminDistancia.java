@@ -161,7 +161,7 @@ public class AdminDistancia extends Thread{
                 JlaberlDistanciaT.setText(Integer.toString(distanciaT));
                 JlabelEstrella.setText(estrella);
                 JlabelJugador.setText(jugador);
-                progBar.setValue(0);
+                
 
                 if(distanciaR <= distanciaT){
                    progBar.setValue((progBar.getValue()+velocidad)); 
