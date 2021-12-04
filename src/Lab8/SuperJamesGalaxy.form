@@ -177,6 +177,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Pausar"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton8MouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="jComboBox4_Jugador">
           <AuxValues>

@@ -3,6 +3,7 @@ package Lab8;
 
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;
+import javax.swing.JTable;
 
 public class AdminDistancia extends Thread{
     private JProgressBar progBar;
@@ -16,6 +17,7 @@ public class AdminDistancia extends Thread{
     private int fila;
     private String estrella;
     private String jugador;
+    private JTable table;
     
     private boolean avanzar;
     private boolean vive;
@@ -32,6 +34,7 @@ public class AdminDistancia extends Thread{
         this.JlabelEstrella = JlabelEstrella;
         this.JlaberlDistanciaT = JlaberlDistanciaT;
         this.JlabelDistanciaR = JlabelDistanciaR;
+        this.table = table;
         this.avanzar = true;
         this.vive = true;
     }
@@ -158,10 +161,11 @@ public class AdminDistancia extends Thread{
                 JlaberlDistanciaT.setText(Integer.toString(distanciaT));
                 JlabelEstrella.setText(estrella);
                 JlabelJugador.setText(jugador);
+                progBar.setValue(0);
 
                 if(distanciaR <= distanciaT){
                    progBar.setValue((progBar.getValue()+velocidad)); 
-                   JlabelDistanciaR.setText(JlabelDistanciaR.getText() + velocidad);
+                   JlabelDistanciaR.setText(Integer.toString(0 + velocidad));
                    
                 }else {
                     progBar.setValue(0);     
@@ -172,7 +176,7 @@ public class AdminDistancia extends Thread{
             } //FIN IF
             
             try {
-                Thread.sleep(1);
+                Thread.sleep(1000);
             } catch (InterruptedException ex) {
             }
         }

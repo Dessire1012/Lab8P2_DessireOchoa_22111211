@@ -158,6 +158,11 @@ public class SuperJamesGalaxy extends javax.swing.JFrame {
         });
 
         jButton8.setText("Pausar");
+        jButton8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton8MouseClicked(evt);
+            }
+        });
 
         jButton9.setText("Agregar");
         jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -736,6 +741,10 @@ public class SuperJamesGalaxy extends javax.swing.JFrame {
         
       
     }//GEN-LAST:event_jButton7MouseClicked
+
+    private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
+        ad.setAvanzar(false);
+    }//GEN-LAST:event_jButton8MouseClicked
 
     /**
      * @param args the command line arguments
