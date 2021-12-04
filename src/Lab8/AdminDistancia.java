@@ -30,7 +30,7 @@ public class AdminDistancia extends Thread{
         this.estrella = estrella;
         this.JlabelJugador = JlabelJugador;
         this.JlabelEstrella = JlabelEstrella;
-        this.JlabelDistanciaR = JlaberlDistanciaT;
+        this.JlaberlDistanciaT = JlaberlDistanciaT;
         this.JlabelDistanciaR = JlabelDistanciaR;
         this.avanzar = true;
         this.vive = true;
@@ -159,13 +159,13 @@ public class AdminDistancia extends Thread{
                 JlabelEstrella.setText(estrella);
                 JlabelJugador.setText(jugador);
 
-                if(distanciaR < distanciaT){
-                   progBar.setValue(progBar.getValue()+velocidad); 
+                if(distanciaR <= distanciaT){
+                   progBar.setValue((progBar.getValue()+velocidad)); 
                    JlabelDistanciaR.setText(JlabelDistanciaR.getText() + velocidad);
                    
                 }else {
-                    progBar.setValue(0);
-                    fila += 1;    
+                    progBar.setValue(0);     
+                    vive = false;
                 }
 
                             
