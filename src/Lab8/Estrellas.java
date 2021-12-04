@@ -1,7 +1,9 @@
 
 package Lab8;
 
-public class Estrellas {
+import java.io.Serializable;
+
+public class Estrellas implements Serializable{
     private String nombre;
     private int distancia;
     private String descripcion;
@@ -14,6 +16,8 @@ public class Estrellas {
         this.distancia = distancia;
         this.descripcion = descripcion;
     }
+    
+    private static final long SerialVersionUIDD = 444L;
 
     public String getNombre() {
         return nombre;

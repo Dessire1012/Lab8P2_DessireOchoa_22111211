@@ -1,7 +1,9 @@
 
 package Lab8;
 
-public class Jugador {
+import java.io.Serializable;
+
+public class Jugador implements Serializable{
     private String nombre;
     private int velocidad;
 
@@ -12,6 +14,8 @@ public class Jugador {
 
     public Jugador() {
     }
+    
+    private static final long SerialVersionUIDD = 444L;
 
     public String getNombre() {
         return nombre;

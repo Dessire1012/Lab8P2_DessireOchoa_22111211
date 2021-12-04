@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.Iterator;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -22,7 +23,7 @@ public class SuperJamesGalaxy extends javax.swing.JFrame {
      */
     public SuperJamesGalaxy() {
         initComponents();
-        listaJugadores.add(new Jugador("Mario", 800));
+        /*listaJugadores.add(new Jugador("Mario", 800));
         listaJugadores.add(new Jugador("Daisy", 750));
 
         listaEstrellas.add(new Estrellas("Estrella dorada", 900, "Estrella de prueba"));
@@ -31,10 +32,14 @@ public class SuperJamesGalaxy extends javax.swing.JFrame {
         listaPartidas.add(new Partidas("Partida 1", new Date()));
         listaPartidas.get(0).setListaEstrellas(listaEstrellas);
         listaPartidas.get(0).setListaJugadores(listaJugadores);
-
+         */
         partidasAdm.cargarArchivo();
         //partidasAdm.setListaPartidas(listaPartidas);
-       // partidasAdm.escribirArchivo();
+        //partidasAdm.escribirArchivo();
+        
+        for (Partidas listaPartida : partidasAdm.getListaPartidas()) {
+            listaPartidas.add(listaPartida);
+        }
 
         modeloPartidas = (DefaultComboBoxModel) jComboBox1.getModel();
 
@@ -150,6 +155,11 @@ public class SuperJamesGalaxy extends javax.swing.JFrame {
         jButton8.setText("Pausar");
 
         jButton9.setText("Agregar");
+        jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton9MouseClicked(evt);
+            }
+        });
 
         jTextField_Jugador.setEditable(false);
         jTextField_Jugador.setText("_");
@@ -580,62 +590,54 @@ public class SuperJamesGalaxy extends javax.swing.JFrame {
         DefaultComboBoxModel EstrellasPartidas = (DefaultComboBoxModel) jComboBox2.getModel();
         EstrellasPartidas.removeAllElements();
 
-        for (Partidas a : partidasAdm.getListaPartidas()) {
+        for (Partidas a : listaPartidas) {
             EstrellasPartidas.addElement((a));
         }
 
         DefaultComboBoxModel JugadoresPartidas = (DefaultComboBoxModel) jComboBox3.getModel();
         JugadoresPartidas.removeAllElements();
 
-        for (Partidas a : partidasAdm.getListaPartidas()) {
+        for (Partidas a : listaPartidas) {
             JugadoresPartidas.addElement((a));
         }
     }//GEN-LAST:event_jTabbedPane1StateChanged
 
     private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        Partidas p = (Partidas) jComboBox2.getSelectedItem();
         String nombre = jTextField3.getText();
         String descripcion = jTextArea1.getText();
         int distancia = Integer.parseInt(jTextField2.getText());
 
-        listaEstrellas.add(new Estrellas(nombre, distancia, descripcion));
-        estrellasAdm.setListaEstrellas(listaEstrellas);
-        estrellasAdm.escribirArchivo();
+        partidasAdm.cargarArchivo();
+
+        for (Partidas listaPartida : partidasAdm.getListaPartidas()) {
+            if (listaPartida.getNombre().equals(p.getNombre())) {
+                p.addEstrella(new Estrellas(nombre, distancia, descripcion));
+            }
+        }
 
         JOptionPane.showMessageDialog(this, "Estrella Creada");
         jTextField3.setText("");
         jTextArea1.setText("");
         jTextField2.setText("");
 
-        Partidas p = (Partidas) jComboBox2.getSelectedItem();
-
-        for (Partidas listaPartida : listaPartidas) {
-            if (listaPartida.getNombre().equals(p.getNombre())) {
-                p.addEstrella(new Estrellas(nombre, distancia, descripcion));
-            }
-        }
-
     }//GEN-LAST:event_jButton5MouseClicked
 
     private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+        Partidas p = (Partidas) jComboBox3.getSelectedItem();
         String nombre = jTextField4.getText();
         int velocidad = Integer.parseInt(jTextField5.getText());
 
-        listaJugadores.add(new Jugador(nombre, velocidad));
-        jugadoresAdm.setListaJugadores(listaJugadores);
-        jugadoresAdm.escribirArchivo();
+        partidasAdm.cargarArchivo();
 
-        JOptionPane.showMessageDialog(this, "Jugador Creado");
-        jTextField4.setText("");
-        jTextField5.setText("");
-
-        Partidas p = (Partidas) jComboBox3.getSelectedItem();
-        
-        for (Partidas listaPartida : listaPartidas) {
+        for (Partidas listaPartida : partidasAdm.getListaPartidas()) {
             if (listaPartida.getNombre().equals(p.getNombre())) {
                 p.addJugador(new Jugador(nombre, velocidad));
             }
         }
-
+        JOptionPane.showMessageDialog(this, "Jugador Creado");
+        jTextField4.setText("");
+        jTextField5.setText("");
 
     }//GEN-LAST:event_jButton6MouseClicked
 
@@ -657,7 +659,7 @@ public class SuperJamesGalaxy extends javax.swing.JFrame {
             }
         }
 
-        JOptionPane.showMessageDialog(this, "Jugador modificado");
+        JOptionPane.showMessageDialog(this, "Partida modificado");
         jTextField6.setText("");
 
     }//GEN-LAST:event_jButton10MouseClicked
@@ -666,10 +668,49 @@ public class SuperJamesGalaxy extends javax.swing.JFrame {
         jFrame1.pack();
         jFrame1.setLocationRelativeTo(this);
         jFrame1.setVisible(true);
-        
+
+        String NPartida = jComboBox1.getSelectedItem().toString();
+        jTextField_Partida1.setText(NPartida);
+
         DefaultComboBoxModel juego_Jugador = (DefaultComboBoxModel) jComboBox4_Jugador.getModel();
-        
+        juego_Jugador.removeAllElements();
+
+        for (Jugador j : ((Partidas) jComboBox1.getSelectedItem()).getListaJugadores()) {
+            juego_Jugador.addElement((j));
+        }
+
+        DefaultComboBoxModel juego_Estrellas = (DefaultComboBoxModel) jComboBox5_Estrellas.getModel();
+        juego_Estrellas.removeAllElements();
+
+        for (Estrellas e : ((Partidas) jComboBox1.getSelectedItem()).getListaEstrellas()) {
+            juego_Estrellas.addElement((e));
+        }
+
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
+        boolean finalizado = false;
+        
+        String nombre = ((Jugador)jComboBox4_Jugador.getSelectedItem()).getNombre();
+        int velocidad = ((Jugador)jComboBox4_Jugador.getSelectedItem()).getVelocidad();
+        
+        String estrella = ((Estrellas)jComboBox5_Estrellas.getSelectedItem()).getNombre();
+        int distancia = ((Estrellas)jComboBox5_Estrellas.getSelectedItem()).getDistancia();
+        
+        String estado = "En espera";
+        
+        DefaultTableModel modelo
+                = (DefaultTableModel)jTable1.getModel();
+        modelo.setRowCount(0);
+        
+         Object[] newrow = {nombre,
+                velocidad,
+                estrella,
+                distancia,
+                estado};
+
+            modelo.addRow(newrow);
+    }//GEN-LAST:event_jButton9MouseClicked
 
     /**
      * @param args the command line arguments
@@ -762,10 +803,9 @@ public class SuperJamesGalaxy extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField_Partida1;
     // End of variables declaration//GEN-END:variables
     ArrayList<Partidas> listaPartidas = new ArrayList();
-    AdminPartidas partidasAdm = new AdminPartidas("./Partidas.cmb");
-    //AdminEstrellas estrellasAdm = new AdminEstrellas("./Estrellas.cmb");
-    //AdminJugadores jugadoresAdm = new AdminJugadores("./Jugadores.cmb");
+    AdminPartidas partidasAdm = new AdminPartidas(".//Partidas.cmb");
     ArrayList<Jugador> listaJugadores = new ArrayList();
     ArrayList<Estrellas> listaEstrellas = new ArrayList();
     DefaultComboBoxModel modeloPartidas;
+
 }

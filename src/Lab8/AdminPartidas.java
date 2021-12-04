@@ -45,10 +45,9 @@ public class AdminPartidas implements Serializable{
             listaPartidas = new ArrayList();
             Partidas temp;
             if (archivo.exists()) {
-                FileInputStream entrada
-                    = new FileInputStream(archivo);
-                ObjectInputStream objeto
-                    = new ObjectInputStream(entrada);
+                //FileInputStream entrada
+                   // = new FileInputStream(archivo);
+                ObjectInputStream objeto = new ObjectInputStream(new FileInputStream("./partidas.cmb"));
                 try {
                     while ((temp = (Partidas) objeto.readObject()) != null) {
                         listaPartidas.add(temp);
@@ -57,7 +56,7 @@ public class AdminPartidas implements Serializable{
                     //encontro el final del archivo
                 }
                 objeto.close();
-                entrada.close();
+                //entrada.close();
             }            
         } catch (Exception ex) {
             

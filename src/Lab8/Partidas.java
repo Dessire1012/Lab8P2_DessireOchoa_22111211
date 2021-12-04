@@ -1,10 +1,11 @@
 
 package Lab8;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Partidas {
+public class Partidas implements Serializable{
     private String nombre;
     private Date fechaCreacion;
     private ArrayList <Estrellas> listaEstrellas = new ArrayList();
@@ -14,6 +15,8 @@ public class Partidas {
         this.nombre = nombre;
         this.fechaCreacion = fechaCreacion;
     }
+    
+    private static final long SerialVersionUIDD = 444L;
 
     public String getNombre() {
         return nombre;
